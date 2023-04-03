@@ -8,22 +8,25 @@ import { AppComponent } from './app.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { NavBarComponent } from './components/navbar.component';
- 
+import { StoreModule } from '@ngrx/store';
+import { reducer as aoeReducer } from './store/reducer/app.reducer';
 
 const COMPONENTS = [
   HomePageComponent,
   UnitsPageComponent,
   UnitDetailsPageComponent,
-  NavBarComponent
+  NavBarComponent,
 ];
-const ANGULAR_MATERIAL_MODULE = [
-  MatTableModule,
-  MatButtonModule
-];
+const ANGULAR_MATERIAL_MODULE = [MatTableModule, MatButtonModule];
 
 @NgModule({
   declarations: [AppComponent, ...COMPONENTS],
-  imports: [BrowserModule, AppRoutingModule, ...ANGULAR_MATERIAL_MODULE],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    StoreModule.forRoot({ aoeStore: aoeReducer }),
+    ...ANGULAR_MATERIAL_MODULE,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
