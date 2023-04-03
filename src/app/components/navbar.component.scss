@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  padding: 25px;
+
+  span {
+    cursor: pointer;
+    color: blue;
+    font-weight: bold;
+  }
+}

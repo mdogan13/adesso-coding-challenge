@@ -1,0 +1,4 @@
+@use '@angular/material' as mat;
+
+$my-typography: mat.define-typography-config();
+@include mat.typography-hierarchy($my-typography);

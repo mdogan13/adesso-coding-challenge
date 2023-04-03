@@ -28,9 +28,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
+      
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           },
@@ -93,7 +95,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": []
           }
