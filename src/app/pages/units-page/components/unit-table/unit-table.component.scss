@@ -1,0 +1,12 @@
+:host {
+  margin: 0 5%;
+
+  .results-counter {
+    text-align: end;
+    margin: 10px 0px;
+  }
+
+  .mat-mdc-cell {
+    cursor: pointer;
+  }
+}

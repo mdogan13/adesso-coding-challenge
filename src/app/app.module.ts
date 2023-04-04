@@ -7,23 +7,39 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NavBarComponent } from './components/navbar.component';
 import { StoreModule } from '@ngrx/store';
 import { reducer as aoeReducer } from './store/reducer/app.reducer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UnitTableFilterComponent } from './pages/units-page/components/unit-table-filter/unit-table-filter.component';
+import { UnitTableComponent } from './pages/units-page/components/unit-table/unit-table.component';
 
 const COMPONENTS = [
   HomePageComponent,
   UnitsPageComponent,
   UnitDetailsPageComponent,
   NavBarComponent,
+  UnitTableFilterComponent,
+  UnitTableComponent
 ];
-const ANGULAR_MATERIAL_MODULE = [MatTableModule, MatButtonModule];
+const ANGULAR_MATERIAL_MODULE = [
+  MatTableModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatSliderModule,
+  MatCheckboxModule
+];
 
 @NgModule({
   declarations: [AppComponent, ...COMPONENTS],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({ aoeStore: aoeReducer }),
     ...ANGULAR_MATERIAL_MODULE,
   ],

@@ -1,0 +1,19 @@
+:host {
+  margin: 0 5%;
+
+  .mat-slider-horizontal {
+    width: 250px;
+  }
+
+  .mat-button-toggle-group {
+    margin-bottom: 20px;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+  }
+
+
+}

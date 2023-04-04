@@ -1,0 +1,43 @@
+<form [formGroup]="myForm">
+  <h2 class="page-title mat-headline-5">Ages</h2>
+  <mat-button-toggle-group formControlName="age">
+    <mat-button-toggle value="all">All</mat-button-toggle>
+    <mat-button-toggle value="dark">Dark</mat-button-toggle>
+    <mat-button-toggle value="feudal">Feudal</mat-button-toggle>
+    <mat-button-toggle value="castle">Castle</mat-button-toggle>
+    <mat-button-toggle value="imperial">Imperial</mat-button-toggle>
+  </mat-button-toggle-group>
+
+
+  <h2 class="page-title mat-headline-5">Costs</h2>
+  <div class="slider-wrapper">
+    <mat-checkbox formControlName="woodControl">Wood</mat-checkbox>
+    <mat-slider class="mat-slider-horizontal" [disabled]="myForm.get('wood')?.status === 'DISABLED'"
+      formControlName="wood" min="0" max="200" ngDefaultControl>
+      <input matSliderStartThumb value="0" #woodStart>
+      <input matSliderEndThumb value="100" #woodEnd>
+    </mat-slider>
+    <span *ngIf="myForm.get('wood')?.status !== 'DISABLED'">{{woodStart.value }} - {{woodEnd.value}}</span>
+  </div>
+
+
+  <div class="slider-wrapper">
+    <mat-checkbox formControlName="foodControl">Food</mat-checkbox>
+    <mat-slider class="mat-slider-horizontal" [disabled]="myForm.get('food')?.status === 'DISABLED'"
+      formControlName="food" min="0" max="200" ngDefaultControl>
+      <input matSliderStartThumb value="0" #foodStart>
+      <input matSliderEndThumb value="100" #foodEnd>
+    </mat-slider>
+    <span *ngIf="myForm.get('food')?.status !== 'DISABLED'">{{foodStart.value }} - {{foodEnd.value}}</span>
+  </div>
+
+  <div class="slider-wrapper">
+    <mat-checkbox formControlName="goldControl">Gold</mat-checkbox>
+    <mat-slider class="mat-slider-horizontal" [disabled]="myForm.get('gold')?.status === 'DISABLED'"
+      formControlName="gold" min="0" max="200" ngDefaultControl>
+      <input matSliderStartThumb value="0" #goldStart>
+      <input matSliderEndThumb value="100" #goldEnd>
+    </mat-slider>
+    <span *ngIf="myForm.get('gold')?.status !== 'DISABLED'">{{goldStart.value }} - {{goldEnd.value}}</span>
+  </div>
+</form>

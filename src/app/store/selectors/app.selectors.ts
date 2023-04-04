@@ -10,3 +10,7 @@ export const unitDataSelector = createSelector(appState, (state) => {
 export const selectedUnitSelector = createSelector(appState, (state) => {
   return state.selectedUnit;
 });
+
+export const filtersSelector = createSelector(appState, (state) => {
+    return state.filters;
+  });
