@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { APP_ROUTES } from 'src/app/constants/routes';
@@ -14,11 +14,11 @@ import {
 } from 'src/app/store/selectors/app.selectors';
 
 @Component({
-  selector: 'unit-table',
+  selector: 'app-unit-table',
   templateUrl: './unit-table.component.html',
   styleUrls: ['./unit-table.component.scss'],
 })
-export class UnitTableComponent {
+export class UnitTableComponent implements OnInit{
   public displayedColumns: string[] = ['id', 'name', 'age', 'costs'];
   public unitData!: Unit[];
   public tableData!: Unit[];
@@ -83,7 +83,6 @@ export class UnitTableComponent {
   }
 
   goToUnitDetailsPage(unitData: Unit) {
-    console.log('setting selected unit to', unitData);
     this.store.dispatch(
       setSelectedUnit({
         payload: unitData,
@@ -92,7 +91,7 @@ export class UnitTableComponent {
     this.router.navigate([`/${APP_ROUTES.UNIT_DETAILS_PAGE}`]);
   }
 
-  getObjectKeys(obj: any): string[] | null {
-    return obj ? Object.keys(obj) : null;
+  getObjectKeys(object: object): string[] | null {
+    return object ? Object.keys(object) : null;
   }
 }

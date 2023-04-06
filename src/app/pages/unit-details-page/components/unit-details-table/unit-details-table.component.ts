@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import {  Subscription } from 'rxjs';
 import { APP_ROUTES } from 'src/app/constants/routes';
-import { Unit } from 'src/app/models/unit';
 import { AppState } from 'src/app/store/reducer/app.reducer';
 import { selectedUnitSelector } from 'src/app/store/selectors/app.selectors';
 
 @Component({
-  selector: 'unit-details-table',
+  selector: 'app-unit-details-table',
   templateUrl: './unit-details-table.component.html',
   styleUrls: ['./unit-details-table.component.scss'],
 })
-export class UnitDetailsTableComponent {
+export class UnitDetailsTableComponent implements OnInit,OnDestroy{
   private subscription!: Subscription;
   public selectedUnitData!: any;
   public tableTemplate: any = [
@@ -29,7 +28,7 @@ export class UnitDetailsTableComponent {
     { label: 'Attack', key: 'attack' },
     { label: 'Accuracy', key: 'accuracy' },
   ];
-  
+
   constructor(
     private store: Store<{ aoeStore: AppState }>,
     private router: Router
@@ -39,7 +38,6 @@ export class UnitDetailsTableComponent {
     this.subscription = this.store
       .select(selectedUnitSelector)
       .subscribe((selectedUnit) => {
-        console.log('SELECTED', selectedUnit);
         this.selectedUnitData = selectedUnit ?? undefined;
         !selectedUnit && this.router.navigate([`/${APP_ROUTES.UNITS_PAGE}`]);
       });

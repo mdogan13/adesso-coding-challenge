@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -9,11 +9,11 @@ import { setFilter } from 'src/app/store/actions/app.actions';
 import { AppState } from 'src/app/store/reducer/app.reducer';
 
 @Component({
-  selector: 'unit-table-filter',
+  selector: 'app-unit-table-filter',
   templateUrl: './unit-table-filter.component.html',
   styleUrls: ['./unit-table-filter.component.scss'],
 })
-export class UnitTableFilterComponent {
+export class UnitTableFilterComponent implements OnInit {
   @ViewChild('woodStart', { static: true }) woodStart!: ElementRef;
   @ViewChild('woodEnd', { static: true }) woodEnd!: ElementRef;
   @ViewChild('foodStart', { static: true }) foodStart!: ElementRef;
@@ -26,7 +26,6 @@ export class UnitTableFilterComponent {
     private fb: FormBuilder,
     private store: Store<{ aoeStore: AppState }>
   ) {
-    console.log('const')
     this.myForm = this.fb.group({
       age: ['all'],
       woodControl: [false],
@@ -39,8 +38,7 @@ export class UnitTableFilterComponent {
   }
 
   ngOnInit() {
-    console.log('init')
-    this.myForm.get('age')?.valueChanges.subscribe((value) => {
+    this.myForm.get('age')?.valueChanges.subscribe(() => {
       this.store.dispatch(
         setFilter({
           payload: {
@@ -124,7 +122,7 @@ export class UnitTableFilterComponent {
   }
 
   trackRangeSliders() {
-    this.myForm.get('wood')?.valueChanges.subscribe((value: number[]) => {
+    this.myForm.get('wood')?.valueChanges.subscribe(() => {
       this.myForm
         .get('wood')
         ?.setValue(
@@ -144,7 +142,7 @@ export class UnitTableFilterComponent {
       );
     });
 
-    this.myForm.get('food')?.valueChanges.subscribe((value: number[]) => {
+    this.myForm.get('food')?.valueChanges.subscribe(() => {
       this.myForm
         .get('food')
         ?.setValue(
@@ -165,7 +163,7 @@ export class UnitTableFilterComponent {
       );
     });
 
-    this.myForm.get('gold')?.valueChanges.subscribe((value: number[]) => {
+    this.myForm.get('gold')?.valueChanges.subscribe(() => {
         this.myForm
           .get('gold')
           ?.setValue(
