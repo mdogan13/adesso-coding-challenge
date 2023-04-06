@@ -38,5 +38,11 @@ export const reducer = createReducer(
         [action.payload.filterType]: action.payload.value,
       },
     };
+  }),
+  on(actions.resetFilters, (state) => {
+    return {
+      ...state,
+      filters: initialState.filters,
+    };
   })
 );

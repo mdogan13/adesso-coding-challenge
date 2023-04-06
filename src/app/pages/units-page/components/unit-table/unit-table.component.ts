@@ -3,7 +3,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { APP_ROUTES } from 'src/app/constants/routes';
 import { Unit } from 'src/app/models/unit';
-import { setSelectedUnit } from 'src/app/store/actions/app.actions';
+import {
+  resetFilters,
+  setSelectedUnit,
+} from 'src/app/store/actions/app.actions';
 import { AppState } from 'src/app/store/reducer/app.reducer';
 import {
   unitDataSelector,
@@ -31,11 +34,13 @@ export class UnitTableComponent {
     private router: Router
   ) {}
   ngOnInit() {
+    this.store.dispatch(resetFilters());
     this.store.select(unitDataSelector).subscribe((unitData) => {
       this.unitData = unitData;
     });
 
     this.store.select(filtersSelector).subscribe((filters) => {
+      console.log('APPLY FILTERS');
       this.filters = filters;
       this.applyFilters();
     });
@@ -78,6 +83,7 @@ export class UnitTableComponent {
   }
 
   goToUnitDetailsPage(unitData: Unit) {
+    console.log('setting selected unit to', unitData);
     this.store.dispatch(
       setSelectedUnit({
         payload: unitData,

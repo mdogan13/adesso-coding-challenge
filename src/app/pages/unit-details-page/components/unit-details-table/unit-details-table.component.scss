@@ -1,0 +1,14 @@
+:host {
+  mat-grid-tile {
+    border: 1px solid #00000012;
+  }
+
+  .mat-mdc-card {
+    min-width: 895px !important;
+  }
+}
+
+:host ::ng-deep .mat-grid-tile-content {
+  padding: 0px 10px !important;
+
+}

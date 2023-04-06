@@ -7,5 +7,9 @@ export const setSelectedUnit = createAction(
 );
 export const setFilter = createAction(
   'SET_FILTER',
-  props<{ payload: { filterType: string; value: number[] | string | undefined} }>()
+  props<{
+    payload: { filterType: string; value: number[] | string | undefined };
+  }>()
 );
+
+export const resetFilters = createAction('RESET_FILTERS');

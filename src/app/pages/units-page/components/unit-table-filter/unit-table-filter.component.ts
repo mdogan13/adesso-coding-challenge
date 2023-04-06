@@ -26,6 +26,7 @@ export class UnitTableFilterComponent {
     private fb: FormBuilder,
     private store: Store<{ aoeStore: AppState }>
   ) {
+    console.log('const')
     this.myForm = this.fb.group({
       age: ['all'],
       woodControl: [false],
@@ -38,6 +39,7 @@ export class UnitTableFilterComponent {
   }
 
   ngOnInit() {
+    console.log('init')
     this.myForm.get('age')?.valueChanges.subscribe((value) => {
       this.store.dispatch(
         setFilter({

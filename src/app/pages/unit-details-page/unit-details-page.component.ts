@@ -6,11 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./unit-details-page.component.scss'],
 })
 export class UnitDetailsPageComponent {
-
-
   constructor() {}
-
-  ngOnInit() {
- 
-  }
 }

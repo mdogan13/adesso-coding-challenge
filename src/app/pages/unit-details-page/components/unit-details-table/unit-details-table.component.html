@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-content>
+    <mat-grid-list cols="10" rowHeight="3:2">
+      <ng-container *ngFor="let detailRow of tableTemplate;let indexOfelement=index; ">
+        <mat-grid-tile [colspan]="4">
+          {{detailRow.label}}
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="6">
+          <container-element [ngSwitch]="detailRow.key">
+            <ng-container *ngIf="selectedUnitData['cost']">
+              <ng-container *ngSwitchCase="'Wood'">{{selectedUnitData['cost'][detailRow.key]?? '-'}}</ng-container>
+              <ng-container *ngSwitchCase="'Food'">{{selectedUnitData['cost'][detailRow.key]?? '-'}}</ng-container>
+              <ng-container *ngSwitchCase="'Gold'">{{selectedUnitData['cost'][detailRow.key]?? '-'}}</ng-container>
+            </ng-container>
+            <ng-container *ngSwitchDefault>{{selectedUnitData[detailRow.key] ?? '-'}}</ng-container>
+          </container-element>
+        </mat-grid-tile>
+      </ng-container>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
