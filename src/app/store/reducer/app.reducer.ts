@@ -44,5 +44,11 @@ export const reducer = createReducer(
       ...state,
       filters: initialState.filters,
     };
+  }),
+  on(actions.resetSelectedUnit, (state) => {
+    return {
+      ...state,
+      selectedUnit: initialState.selectedUnit,
+    };
   })
 );

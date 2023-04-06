@@ -13,3 +13,5 @@ export const setFilter = createAction(
 );
 
 export const resetFilters = createAction('RESET_FILTERS');
+
+export const resetSelectedUnit = createAction('RESET_SELECTED_UNIT');

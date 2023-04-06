@@ -5,6 +5,7 @@ import { APP_ROUTES } from 'src/app/constants/routes';
 import { Unit } from 'src/app/models/unit';
 import {
   resetFilters,
+  resetSelectedUnit,
   setSelectedUnit,
 } from 'src/app/store/actions/app.actions';
 import { AppState } from 'src/app/store/reducer/app.reducer';
@@ -35,6 +36,7 @@ export class UnitTableComponent implements OnInit{
   ) {}
   ngOnInit() {
     this.store.dispatch(resetFilters());
+    this.store.dispatch(resetSelectedUnit());
     this.store.select(unitDataSelector).subscribe((unitData) => {
       this.unitData = unitData;
     });
