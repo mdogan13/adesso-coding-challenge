@@ -42,7 +42,6 @@ export class UnitTableComponent implements OnInit{
     });
 
     this.store.select(filtersSelector).subscribe((filters) => {
-      console.log('APPLY FILTERS');
       this.filters = filters;
       this.applyFilters();
     });
