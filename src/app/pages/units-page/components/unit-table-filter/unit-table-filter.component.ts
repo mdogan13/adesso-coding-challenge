@@ -1,9 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { setFilter } from 'src/app/store/actions/app.actions';
 import { AppState } from 'src/app/store/reducer/app.reducer';
@@ -54,70 +50,45 @@ export class UnitTableFilterComponent implements OnInit {
 
   trackCheckboxes() {
     this.myForm.get('woodControl')?.valueChanges.subscribe((value) => {
-      if (value) {
-        this.myForm.get('wood')?.enable();
-        this.store.dispatch(
-          setFilter({
-            payload: {
-              filterType: 'wood',
-              value: this.myForm.get('wood')?.value,
-            },
-          })
-        );
-      } else {
-        this.myForm.get('wood')?.disable();
-        this.store.dispatch(
-          setFilter({ payload: { filterType: 'wood', value: undefined } })
-        );
-      }
+      value
+        ? this.myForm.get('wood')?.enable()
+        : this.myForm.get('wood')?.disable();
+      this.store.dispatch(
+        setFilter({
+          payload: {
+            filterType: 'wood',
+            value: value ? this.myForm.get('wood')?.value : undefined,
+          },
+        })
+      );
     });
 
     this.myForm.get('foodControl')?.valueChanges.subscribe((value) => {
-      if (value) {
-        this.myForm.get('food')?.enable();
-        this.store.dispatch(
-          setFilter({
-            payload: {
-              filterType: 'food',
-              value: this.myForm.get('food')?.value,
-            },
-          })
-        );
-      } else {
-        this.myForm.get('food')?.disable();
-        this.store.dispatch(
-          setFilter({
-            payload: {
-              filterType: 'food',
-              value: undefined,
-            },
-          })
-        );
-      }
+      value
+        ? this.myForm.get('food')?.enable()
+        : this.myForm.get('food')?.disable();
+      this.store.dispatch(
+        setFilter({
+          payload: {
+            filterType: 'food',
+            value: value ? this.myForm.get('food')?.value : undefined,
+          },
+        })
+      );
     });
 
     this.myForm.get('goldControl')?.valueChanges.subscribe((value) => {
-      if (value) {
-        this.myForm.get('gold')?.enable();
-        this.store.dispatch(
-          setFilter({
-            payload: {
-              filterType: 'gold',
-              value: this.myForm.get('gold')?.value,
-            },
-          })
-        );
-      } else {
-        this.myForm.get('gold')?.disable();
-        this.store.dispatch(
-          setFilter({
-            payload: {
-              filterType: 'gold',
-              value: undefined,
-            },
-          })
-        );
-      }
+      value
+        ? this.myForm.get('gold')?.enable()
+        : this.myForm.get('gold')?.disable();
+      this.store.dispatch(
+        setFilter({
+          payload: {
+            filterType: 'gold',
+            value: value ? this.myForm.get('gold')?.value : undefined,
+          },
+        })
+      );
     });
   }
 
@@ -164,23 +135,23 @@ export class UnitTableFilterComponent implements OnInit {
     });
 
     this.myForm.get('gold')?.valueChanges.subscribe(() => {
-        this.myForm
-          .get('gold')
-          ?.setValue(
-            [
-              Number(this.goldStart.nativeElement.value),
-              Number(this.goldEnd.nativeElement.value),
-            ],
-            { emitEvent: false }
-          );
-        this.store.dispatch(
-          setFilter({
-            payload: {
-              filterType: 'gold',
-              value: this.myForm.get('gold')?.value,
-            },
-          })
+      this.myForm
+        .get('gold')
+        ?.setValue(
+          [
+            Number(this.goldStart.nativeElement.value),
+            Number(this.goldEnd.nativeElement.value),
+          ],
+          { emitEvent: false }
         );
-      });
+      this.store.dispatch(
+        setFilter({
+          payload: {
+            filterType: 'gold',
+            value: this.myForm.get('gold')?.value,
+          },
+        })
+      );
+    });
   }
 }
